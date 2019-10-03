@@ -1,0 +1,10 @@
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (1, 9, 10, 'Soup1', 0, '3.48', 3, 8, 9);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (2, 2, 10, 'Soup2', 1, '6.65', 8, 8, 8);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (3, 3, 9, 'Salad1', 0, '4.43', 4, 4, 6);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (4, 5, 10, 'Salad2', 0, '9.67', 7, 7, 6);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (5, 8, 10, 'MainDish1', 0, '6.67', 5, 4, 5);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (6, 6, 5, 'MainDish2', 1, '4.30', 3, 1, 10);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (7, 10, 5, 'MainDish3', 0, '2.92', 9, 7, 9);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (8, 1, 6, 'MainDish4', 1, '5.07', 1, 4, 2);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (9, 3, 10, 'Dessert1', 0, '6.53', 10, 9, 5);
+insert into product (id, description, code, name, locked, price, status_id, measure_id, product_status_id) values (10, 3, 9, 'Dessert2', 0, '3.50', 3, 4, 10);

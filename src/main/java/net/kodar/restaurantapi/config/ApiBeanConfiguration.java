@@ -19,14 +19,9 @@ public class ApiBeanConfiguration {
     }
 
     @Bean
-    public CustomAuthenticationSuccessHandler customAuthenticationSuccessHandler(){
-        return new CustomAuthenticationSuccessHandler();
-    }
-    
-    @Bean
     @Primary
-    public CustomPreAuthenticationFilter authFilter() {
-    	return new CustomPreAuthenticationFilter();
+    public CustomPreAuthenticationFilterTest authFilter() {
+    	return new CustomPreAuthenticationFilterTest();
     }
 
     @Bean

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import org.reflections.ReflectionUtils;
 import org.springframework.stereotype.Service;
 
 import net.kodar.restaurantapi.business.processor.ProcessorGenericImpl;
@@ -17,6 +18,7 @@ import net.kodar.restaurantapi.data.entities.ApiUserGroup;
 import net.kodar.restaurantapi.dataaccess.dao.apiusergroup.ApiUserGroupDaoImpl;
 import net.kodar.restaurantapi.presentation.param.ApiUserGroupParam;
 import net.kodar.restaurantapi.presentation.result.ApiUserGroupResult;
+import net.kodar.restaurantapi.util.Utils;
 
 @Service
 public class ApiUserGroupProcessorImpl 
@@ -29,12 +31,26 @@ extends ProcessorGenericImpl<ApiUserGroupParam, ApiUserGroupResult, Long, ApiUse
 	}
 
 	public List<ApiGroup> findByUser(ApiUser user) {
+		
+
 		List<ApiGroup> userGroups = new ArrayList<ApiGroup>();
 		List<ApiUserGroup> storedUserGroups = this.dao.getAll();
-		String username = user.getUsername();
-		storedUserGroups.stream().filter(g -> g.getApiUser().getUsername().equals(username)).forEach(g -> userGroups.add(g.getApiGroup()));//;.collect(Collectors.toList());
 		
-		return userGroups;
+		//List<ApiGroup> groups = new ArrayList<ApiGroup>();
+//		try {
+//			
+//			groups = (List<ApiGroup>) Utils.filterListBy(storedUserGroups, user, new ApiGroup());
+//			
+//		} catch (NoSuchFieldException | SecurityException e) {
+//			e.printStackTrace();
+//		} catch (IllegalAccessException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+
+		storedUserGroups.stream().filter(g -> g.getApiUser().getId().equals(user.getId())).forEach(g -> userGroups.add(g.getApiGroup()));
+		
+		return userGroups;  /*userGroups;*/
 	}
 	
 }

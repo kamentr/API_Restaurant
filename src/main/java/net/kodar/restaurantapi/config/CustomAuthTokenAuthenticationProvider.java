@@ -12,12 +12,14 @@ import net.kodar.restaurantapi.business.processor.apigroup.ApiGroupProcessorImpl
 import net.kodar.restaurantapi.business.processor.apiusergroup.ApiUserGroupProcessorImpl;
 import net.kodar.restaurantapi.data.entities.ApiGroup;
 import net.kodar.restaurantapi.data.entities.ApiUser;
+import net.kodar.restaurantapi.data.entities.security.ApiSession;
 import net.kodar.restaurantapi.data.entities.security.CustomUsernamePasswordAuthentication;
 import net.kodar.restaurantapi.dataaccess.dao.apigroup.ApiGroupDao;
 import net.kodar.restaurantapi.dataaccess.dao.apiuser.ApiUserDaoImpl;
+import net.kodar.restaurantapi.dataaccess.repository.ApiSessionRepository;
 
 @Component
-public class CustomAuthenticationProvider implements AuthenticationProvider {
+public class CustomAuthTokenAuthenticationProvider implements AuthenticationProvider {
 
 	@Autowired
 	private ApiUserDaoImpl userDao;
@@ -28,22 +30,29 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+	@Autowired
+	private ApiSessionRepository sessionRepository;
+
 	@Override
 	public Authentication authenticate(Authentication auth) {
 
 		CustomUsernamePasswordAuthentication authentication = (CustomUsernamePasswordAuthentication) auth;
-		String username = authentication.getName();
-		if (authentication.getName() != null) {
+		
+		String authToken = authentication.getAuthToken();
 
-			ApiUser user = userDao.findByUsername(username);
+		ApiSession storedSession = sessionRepository.findByAuthToken(authToken);
+
+		if (storedSession != null) {
+
+			ApiUser user = userDao.findByUsername(storedSession.getUsername());
 			List<ApiGroup> userAuthorities = groupsProcessor.findByUser(user);
-			
+
 			authentication = new CustomUsernamePasswordAuthentication(user.getUsername(), user.getPassword(),
 					userAuthorities);
 
 			return authentication;
 		}
-		
+
 		return null;
 	}
 

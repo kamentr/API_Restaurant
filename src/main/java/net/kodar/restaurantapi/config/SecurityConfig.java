@@ -30,16 +30,19 @@ import net.kodar.restaurantapi.business.processor.authentication.AuthenticationP
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Autowired
-	private CustomAuthenticationProvider authProvider;
+	private CustomAuthTokenAuthenticationProvider authenticationProvider;
 
+	@Autowired
+	private CustomBasicAuthenticationProvider basicAuthenticationProvider;
+	
 	@Autowired
 	private CustomAuthenticationEntryPoint entryPoint;
 
 	@Autowired
-	CustomAuthenticationSuccessHandler successHandler;
-
+	private CustomAuthenticationManager authManager;
+	
 	@Autowired
-	private CustomPreAuthenticationFilter preAuthFilter;
+	private CustomPreAuthenticationFilterTest preAuthFilter;
 
 	@Autowired
 	private AuthenticationProcessorImpl authProcessor;
@@ -47,9 +50,12 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 
+
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		auth.authenticationProvider(authProvider);
+		auth.parentAuthenticationManager(authManager);
+		auth.authenticationProvider(authenticationProvider); 	
+		auth.authenticationProvider(basicAuthenticationProvider);
 	}
 
 //	@Autowired
@@ -67,13 +73,23 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         		.sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
                 .addFilterBefore(preAuthFilter, UsernamePasswordAuthenticationFilter.class)
-                .authenticationProvider(authProvider)
                 .authorizeRequests()
                 .antMatchers("/login", "/logout").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().disable()
                 .logout().disable();
+    }
+	
+	@Override
+    public void configure(WebSecurity web) throws Exception {
+        web.ignoring().antMatchers(
+                "/resources/**", "/static/**", "/css/**", "/js/**", "/images/**",
+                "/resources/static/**", "/css/**", "/js/**", "/img/**", "/fonts/**",
+                "/images/**", "/scss/**", "/vendor/**", "/favicon.ico", "/auth/**", "/favicon.png",
+                "/v2/api-docs", "/configuration/ui", "/configuration/security", "/swagger-ui.html",
+                "/webjars/**", "/swagger-resources/**", "/swagge‌​r-ui.html", "/actuator",
+                "/actuator/**");
     }
 
 }

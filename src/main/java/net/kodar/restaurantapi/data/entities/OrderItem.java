@@ -11,10 +11,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 
-/**
- * The persistent class for the order_item database table.
- * 
- */
 @Data
 @EqualsAndHashCode(callSuper=true)
 @Entity
@@ -27,7 +23,7 @@ public class OrderItem extends NamedPersistent implements Serializable {
 	private BigDecimal price;
 
 	@Column(nullable=false)
-	private int quantitty;
+	private int quantity;
 
 	//bi-directional many-to-one association to LifecycleStatus
 	@ManyToOne

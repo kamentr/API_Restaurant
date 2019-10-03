@@ -14,5 +14,4 @@ public class RestaurantTableStatus extends NamedPersistent implements Serializab
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
 }

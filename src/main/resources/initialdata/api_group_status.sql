@@ -1,0 +1,10 @@
+insert into api_group_status (id, description, code, name, locked) values (1, 7, 8, 'name', 0);
+insert into api_group_status (id, description, code, name, locked) values (2, 9, 10, 'name', 0);
+insert into api_group_status (id, description, code, name, locked) values (3, 3, 6, 'name', 1);
+insert into api_group_status (id, description, code, name, locked) values (4, 8, 4, 'name', 0);
+insert into api_group_status (id, description, code, name, locked) values (5, 5, 2, 'name', 1);
+insert into api_group_status (id, description, code, name, locked) values (6, 10, 8, 'name', 1);
+insert into api_group_status (id, description, code, name, locked) values (7, 1, 9, 'name', 0);
+insert into api_group_status (id, description, code, name, locked) values (8, 6, 8, 'name', 1);
+insert into api_group_status (id, description, code, name, locked) values (9, 1, 5, 'name', 1);
+insert into api_group_status (id, description, code, name, locked) values (10, 10, 1, 'name', 0);

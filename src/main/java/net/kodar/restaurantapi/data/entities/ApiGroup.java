@@ -25,7 +25,7 @@ public class ApiGroup extends NamedPersistent implements Serializable, GrantedAu
 	private static final long serialVersionUID = 1L;
 
 	private String authority;
-	
+
 	//bi-directional many-to-one association to ApiGroupStatus
 	@ManyToOne
 	@JoinColumn(name="api_group_status_id")//, nullable=false)

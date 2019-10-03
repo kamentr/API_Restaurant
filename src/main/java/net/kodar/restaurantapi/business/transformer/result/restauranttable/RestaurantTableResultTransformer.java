@@ -18,7 +18,7 @@ public class RestaurantTableResultTransformer implements ResultTransformer<Resta
 		result.setDescription(entity.getDescription());
 		result.setName(entity.getName());
 		
-		result.setRestaurantTavbleStatus(entity.getRestaurantTavbleStatus());
+		result.setRestaurantTavbleStatus(entity.getRestaurantTableStatus());
 		
 		return result;
 	}

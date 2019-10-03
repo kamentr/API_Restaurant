@@ -37,21 +37,11 @@ import net.kodar.restaurantapi.dataaccess.repository.ApiSessionRepository;
 
 @Filter(name = "preAuthFilter")
 @Component
-public class CustomPreAuthenticationFilter extends OncePerRequestFilter {
+public class CustomPreAuthenticationFilterTest extends OncePerRequestFilter {
 
 	private static final String AUTHENTICATION_TOKEN = "authToken";
 
 	private static final String AUTHENTICATION_BASIC = "Authorization";
-
-	@Autowired
-	private ApiUserDaoImpl userDao;
-
-	@Autowired
-	private ApiSessionRepository sessionRepository;
-	
-	@Autowired
-	private BCryptPasswordEncoder encoder;
-
 
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
@@ -83,18 +73,10 @@ public class CustomPreAuthenticationFilter extends OncePerRequestFilter {
 
 			String username = basicAuthHeader.getUsername();
 			String password = basicAuthHeader.getPassword();
-				
-			ApiUser storedUser = userDao.findByUsername(username);
-			
-			String storedPassword = storedUser.getPassword();
-			
-			if (storedUser != null && encoder.matches(password, storedPassword)) {
 
-				CustomUsernamePasswordAuthentication authentication = new CustomUsernamePasswordAuthentication(username, password);
-				return authentication;
-				
-			}
-
+			CustomUsernamePasswordAuthentication authentication = new CustomUsernamePasswordAuthentication(username,
+					password);
+			return authentication;
 		}
 
 		return null;
@@ -105,19 +87,13 @@ public class CustomPreAuthenticationFilter extends OncePerRequestFilter {
 		String accessAuthToken = httpRequest.getHeader(AUTHENTICATION_TOKEN);
 
 		if (accessAuthToken != null) {
-			ApiSession storedSession = sessionRepository.findByAuthToken(accessAuthToken);
 
-			if (null != storedSession) {
-				ApiUser user = userDao.findByUsername(storedSession.getUsername());
+			CustomUsernamePasswordAuthentication authentication = new CustomUsernamePasswordAuthentication("", "",
+					accessAuthToken);
 
-				CustomUsernamePasswordAuthentication authentication = new CustomUsernamePasswordAuthentication(
-						user.getUsername(), user.getPassword());
-
-				return authentication;
-			}
+			return authentication;
 		}
 
 		return null;
-
 	}
 }

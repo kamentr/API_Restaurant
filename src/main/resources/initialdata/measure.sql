@@ -1,0 +1,10 @@
+insert into measure (id, description, code, name, locked, measure_unit) values (1, 5, 2, 'salt', 0, 'ml');
+insert into measure (id, description, code, name, locked, measure_unit) values (2, 2, 1, 'pepper', 0, 'ml');
+insert into measure (id, description, code, name, locked, measure_unit) values (3, 9, 8, 'carrot', 0, 'liters');
+insert into measure (id, description, code, name, locked, measure_unit) values (4, 4, 3, 'apple', 1, 'kg');
+insert into measure (id, description, code, name, locked, measure_unit) values (5, 4, 4, 'banana', 0, 'kg');
+insert into measure (id, description, code, name, locked, measure_unit) values (6, 5, 2, 'ketchup', 0, 'liters');
+insert into measure (id, description, code, name, locked, measure_unit) values (7, 4, 3, 'milk', 1, 'gr');
+insert into measure (id, description, code, name, locked, measure_unit) values (8, 5, 7, 'chicken', 0, 'ml');
+insert into measure (id, description, code, name, locked, measure_unit) values (9, 4, 9, 'broccoli', 1, 'kg');
+insert into measure (id, description, code, name, locked, measure_unit) values (10, 9, 10, 'ingredient1', 1, 'gr');

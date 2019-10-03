@@ -1,0 +1,10 @@
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (1, 7, 1, 'salt', 0, '8.97', 9);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (2, 5, 7, 'pepper', 0, '2.06', 2);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (3, 10, 4, 'carrot', 0, '0.12', 3);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (4, 5, 10, 'apple', 1, '7.77', 4);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (5, 10, 10, 'banana', 1, '9.10', 1);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (6, 3, 3, 'ketchup', 1, '3.93', 5);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (7, 1, 2, 'milk', 0, '4.32', 7);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (8, 8, 1, 'chicken', 0, '5.41', 2);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (9, 10, 10, 'broccoli', 1, '2.24', 5);
+insert into menu_item (id, description, code, name, locked, price, measure_id) values (10, 1, 4, 'ingredient1', 1, '0.37', 8);

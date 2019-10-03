@@ -21,7 +21,7 @@ public class RestaurantTableParamTransformer implements ParamTransformer<Restaur
 		entity.setName(param.getName());		
 		entity.setLocked(param.isLocked());
 
-		entity.setRestaurantTavbleStatus(param.getRestaurantTavbleStatus());
+		entity.setRestaurantTableStatus(param.getRestaurantTavbleStatus());
 		
 		return entity;
 	}

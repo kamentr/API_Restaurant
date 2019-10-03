@@ -21,7 +21,7 @@ public class OrderItemParamTransformer implements ParamTransformer<OrderItemPara
 		entity.setLocked(param.isLocked());
 
 		entity.setPrice(param.getPrice());
-		entity.setQuantitty(param.getQuantitty());
+		entity.setQuantity(param.getQuantitty());
 		entity.setProduct(param.getProduct());
 		
 		return entity;

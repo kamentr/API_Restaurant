@@ -29,4 +29,10 @@ dependencies {
 	compile group: 'org.springframework.boot', name: 'spring-boot-starter-thymeleaf', version: '2.1.7.RELEASE'
 	compileOnly 'org.projectlombok:lombok:1.18.10'
 	annotationProcessor 'org.projectlombok:lombok:1.18.10'
+	// https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.8.0'
+	// https://mvnrepository.com/artifact/io.swagger/swagger-core
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.8.0'
+	
+	
 }
