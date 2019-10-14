@@ -9,7 +9,8 @@ import org.springframework.security.web.RedirectStrategy;
 
 class CustomRedirectStrategy implements RedirectStrategy {
 
-	  @Override
-	  public void sendRedirect(final HttpServletRequest request, final HttpServletResponse response, final String url) throws IOException {
-	  }
+	@Override
+	public void sendRedirect(final HttpServletRequest request, final HttpServletResponse response, final String url)
+			throws IOException {
 	}
+}

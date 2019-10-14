@@ -20,8 +20,8 @@ public class ApiBeanConfiguration {
 
     @Bean
     @Primary
-    public CustomPreAuthenticationFilterTest authFilter() {
-    	return new CustomPreAuthenticationFilterTest();
+    public CustomPreAuthenticationFilter authFilter() {
+    	return new CustomPreAuthenticationFilter();
     }
 
     @Bean

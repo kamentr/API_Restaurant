@@ -20,6 +20,12 @@ public class CustomUsernamePasswordAuthentication extends UsernamePasswordAuthen
 		this.authToken = authToken;
 	}
 
+	public CustomUsernamePasswordAuthentication(String username, String password, String authToken,
+			Collection<? extends GrantedAuthority> userAuthorities) {
+		super(username, password, userAuthorities);
+		this.authToken = authToken;
+	}
+	
 	public CustomUsernamePasswordAuthentication(String username, String password,
 			Collection<? extends GrantedAuthority> userAuthorities) {
 		super(username, password, userAuthorities);

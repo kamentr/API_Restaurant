@@ -11,5 +11,5 @@ import net.kodar.restaurantapi.data.entities.ApiUserGroup;
 
 @Repository
 public interface ApiUserGroupRepository extends CrudRepository<ApiUserGroup, Long>{
-	List<ApiGroup> findByApiUser(ApiUser apiUser);
+	List<ApiGroup> findApiGroupByApiUser(ApiUser apiUser);
 }

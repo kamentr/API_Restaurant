@@ -22,6 +22,6 @@ public class ApiGroupDaoImpl extends DaoGenericImpl<ApiGroup, Long> implements A
 		return entity.getId();
 	}
 
-
+	
 
 }

@@ -19,7 +19,7 @@ public class AuthenticationService {
 
 	@GetMapping("/logout")
 	@ResponseBody
-	String logout() {
+	public String logout() {
 		authProcessor.logout();
 		
 		return "Successful logout!";
@@ -27,7 +27,7 @@ public class AuthenticationService {
 
 	@GetMapping("/login")
 	@ResponseBody
-	String login() {
+	public String login() {
 		String authToken = authProcessor.login();
 		
 		return authToken;

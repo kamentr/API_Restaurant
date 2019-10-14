@@ -42,7 +42,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	private CustomAuthenticationManager authManager;
 	
 	@Autowired
-	private CustomPreAuthenticationFilterTest preAuthFilter;
+	private CustomPreAuthenticationFilter preAuthFilter;
 
 	@Autowired
 	private AuthenticationProcessorImpl authProcessor;

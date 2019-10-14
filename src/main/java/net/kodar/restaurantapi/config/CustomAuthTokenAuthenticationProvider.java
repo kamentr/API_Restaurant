@@ -25,10 +25,7 @@ public class CustomAuthTokenAuthenticationProvider implements AuthenticationProv
 	private ApiUserDaoImpl userDao;
 
 	@Autowired
-	private ApiUserGroupProcessorImpl groupsProcessor;
-
-	@Autowired
-	private BCryptPasswordEncoder encoder;
+	private ApiGroupProcessorImpl groupsProcessor;
 
 	@Autowired
 	private ApiSessionRepository sessionRepository;
@@ -45,9 +42,9 @@ public class CustomAuthTokenAuthenticationProvider implements AuthenticationProv
 		if (storedSession != null) {
 
 			ApiUser user = userDao.findByUsername(storedSession.getUsername());
-			List<ApiGroup> userAuthorities = groupsProcessor.findByUser(user);
+			List<ApiGroup> userAuthorities = groupsProcessor.findByUser(user.getUsername());
 
-			authentication = new CustomUsernamePasswordAuthentication(user.getUsername(), user.getPassword(),
+			authentication = new CustomUsernamePasswordAuthentication(user.getUsername(), user.getPassword(), authToken,
 					userAuthorities);
 
 			return authentication;

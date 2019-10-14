@@ -5,8 +5,6 @@ import java.util.Base64;
 
 public class ApiBasicAuthentication {
 
-	private String request;
-
 	private String username;
 
 	private String password;

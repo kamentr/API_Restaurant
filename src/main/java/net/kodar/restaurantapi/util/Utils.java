@@ -1,12 +1,18 @@
 package net.kodar.restaurantapi.util;
 
 import java.lang.reflect.Field;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
+import java.util.stream.Collectors;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.reflections.ReflectionUtils;
+import org.springframework.http.HttpHeaders;
 
+import lombok.var;
 import net.kodar.restaurantapi.data.entities.Persistent;
 
 public final class Utils {
@@ -15,38 +21,28 @@ public final class Utils {
 
 	}
 
-	@SuppressWarnings("unchecked")
-	public static <T extends Persistent, R extends Persistent, F extends Persistent> List<R> filterListBy
-	(Collection<T> listToFilter, F filterObject, R resultObject)
-			throws NoSuchFieldException, SecurityException, IllegalAccessException {
+	public static List<Object> filterListBy(List<?> list, String propName) throws IllegalArgumentException, IllegalAccessException, NoSuchFieldException, SecurityException {
 
-		List<R> resultList = new ArrayList<R>();
+	        List<Object> result = new ArrayList<Object>();
+	        
+	        for (Object item : list) {
+	            Object value = item.getClass().getField(propName).get(item);
 
-		listToFilter.stream().filter(gu -> {
-			try {
+	        }
+	        
+	        return null;//result;
 
-				Field field = gu.getClass().getDeclaredField("apiUser");
-				return ((T) field.get(gu)).getId().equals(filterObject.getId());
+	    }
+	
+	
+	List test() {
+		List<Object> list = new ArrayList<Object>();
+		
+		return null;
+	} 
 
-			} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-				e.printStackTrace();
-				return false;
-				
-			}
-			
-		}).forEach(g -> {
-			try {
-
-				Field field = g.getClass().getDeclaredField("apiGroup");
-				resultList.add((R) field.get(g));
-
-			} catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
-				e.printStackTrace();
-			}
-		});
-		return resultList;
-	}
-
-//	listToFilter.stream().filter(g -> g.getApiUser().getId().equals(user.getId)).forEach(g -> resultList.add(g.getApiGroup()));
+//	listToFilter.stream()
+//	.filter(g -> g.getApiUser().getId().equals(user.getId))
+//	.forEach(g -> resultList.add(g.getApiGroup()));
 
 }

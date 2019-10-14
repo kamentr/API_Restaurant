@@ -1,31 +1,22 @@
 package net.kodar.restaurantapi.config;
 
-import java.io.IOException;
 import java.util.List;
 
-import javax.servlet.FilterChain;
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import net.kodar.restaurantapi.business.processor.apigroup.ApiGroupProcessorImpl;
 import net.kodar.restaurantapi.business.processor.apiusergroup.ApiUserGroupProcessorImpl;
-import net.kodar.restaurantapi.data.entities.ApiBasicAuthentication;
 import net.kodar.restaurantapi.data.entities.ApiGroup;
 import net.kodar.restaurantapi.data.entities.ApiUser;
-import net.kodar.restaurantapi.data.entities.security.ApiSession;
 import net.kodar.restaurantapi.data.entities.security.CustomUsernamePasswordAuthentication;
 import net.kodar.restaurantapi.dataaccess.dao.apiuser.ApiUserDaoImpl;
-import net.kodar.restaurantapi.dataaccess.dao.apiusergroup.ApiUserGroupDao;
-import net.kodar.restaurantapi.dataaccess.repository.ApiSessionRepository;
-import net.kodar.restaurantapi.dataaccess.repository.ApiUserGroupRepository;
 
 @Component
 public class CustomBasicAuthenticationProvider implements AuthenticationProvider {
@@ -37,28 +28,32 @@ public class CustomBasicAuthenticationProvider implements AuthenticationProvider
 	private BCryptPasswordEncoder encoder;
 
 	@Autowired
-	private ApiUserGroupProcessorImpl groupsProcessor;
+	private ApiGroupProcessorImpl groupsProcessor;
 
 	@Override
 	public Authentication authenticate(Authentication authentication) throws AuthenticationException {
 
 		CustomUsernamePasswordAuthentication customAuth = (CustomUsernamePasswordAuthentication) authentication;
 		if (customAuth != null) {
-			String username = authentication.getName();
-			String password = authentication.getCredentials().toString();
 
-			ApiUser storedUser = userDao.findByUsername(username);
+			if (null != authentication.getCredentials()) {
 
-			String storedPassword = storedUser.getPassword();
+				String username = Optional.of(authentication.getName()).orElse("");
+				String password = Optional.of((authentication.getCredentials()).toString()).orElse("");
 
-			if (storedUser != null && encoder.matches(password, storedPassword)) {
-				List<ApiGroup> userAuthorities = groupsProcessor.findByUser(storedUser);
+				Optional<ApiUser> storedUser = Optional.ofNullable(userDao.findByUsername(username));
 
-				authentication = new CustomUsernamePasswordAuthentication(username, password, userAuthorities);
-				return authentication;
+				String storedPassword = storedUser.map(u -> u.getPassword()).orElse("");
+
+				if (storedUser.isPresent() && encoder.matches(password, storedPassword)) {
+					List<ApiGroup> userAuthorities = groupsProcessor.findByUser(storedUser.get().getUsername());
+
+					authentication = new CustomUsernamePasswordAuthentication(username, password, userAuthorities);
+					return authentication;
+				}
 			}
 		}
-		
+
 		return null;
 	}
 
