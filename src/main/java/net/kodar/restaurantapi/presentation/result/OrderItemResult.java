@@ -8,11 +8,9 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import net.kodar.restaurantapi.data.entities.LifecycleStatus;
 import net.kodar.restaurantapi.data.entities.NamedPersistent;
-import net.kodar.restaurantapi.data.entities.Persistent;
 import net.kodar.restaurantapi.data.entities.Product;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 
 /**

@@ -3,7 +3,6 @@ package net.kodar.restaurantapi.business.processor.apigroupstatus;
 import org.springframework.stereotype.Service;
 
 import net.kodar.restaurantapi.business.processor.ProcessorGenericImpl;
-import net.kodar.restaurantapi.business.processor.apigroup.ApiGroupProcessor;
 import net.kodar.restaurantapi.business.transformer.param.apigroupstatus.ApiGroupStatusParamTransformer;
 import net.kodar.restaurantapi.business.transformer.result.apigroupstatus.ApiGroupStatusResultTransformer;
 import net.kodar.restaurantapi.business.validator.apigroupstatus.ApiGroupStatusValidatorImpl;

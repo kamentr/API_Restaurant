@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import net.kodar.restaurantapi.business.processor.ProcessorGenericImpl;
 import net.kodar.restaurantapi.business.transformer.param.restaurantmenustatus.RestaurantMenuStatusParamTransformer;
 import net.kodar.restaurantapi.business.transformer.result.restaurantmenustatus.RestaurantMenuStatusResultTransformer;
-import net.kodar.restaurantapi.business.validator.restaurantmenucategory.RestaurantMenuCategoryValidatorImpl;
+import net.kodar.restaurantapi.business.validator.restaurantmenustatus.RestaurantMenuStatusValidatorImpl;
 import net.kodar.restaurantapi.data.entities.RestaurantMenuStatus;
 import net.kodar.restaurantapi.dataaccess.dao.restaurantmenustatus.RestaurantMenuStatusDaoImpl;
 import net.kodar.restaurantapi.presentation.param.RestaurantMenuStatusParam;
@@ -19,7 +19,7 @@ RestaurantMenuStatus,
 RestaurantMenuStatusDaoImpl, 
 RestaurantMenuStatusParamTransformer, 
 RestaurantMenuStatusResultTransformer,
-RestaurantMenuCategoryValidatorImpl> implements RestaurantMenuStatusProcessor{
+RestaurantMenuStatusValidatorImpl> implements RestaurantMenuStatusProcessor{
 
 	@Override
 	public Long getID(RestaurantMenuStatusParam param) {

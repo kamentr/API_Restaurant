@@ -5,16 +5,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.kodar.restaurantapi.business.processor.apigroup.ApiGroupProcessorImpl;
-import net.kodar.restaurantapi.business.processor.apiusergroup.ApiUserGroupProcessorImpl;
 import net.kodar.restaurantapi.data.entities.ApiGroup;
 import net.kodar.restaurantapi.data.entities.ApiUser;
 import net.kodar.restaurantapi.data.entities.security.ApiSession;
 import net.kodar.restaurantapi.data.entities.security.CustomUsernamePasswordAuthentication;
-import net.kodar.restaurantapi.dataaccess.dao.apigroup.ApiGroupDao;
 import net.kodar.restaurantapi.dataaccess.dao.apiuser.ApiUserDaoImpl;
 import net.kodar.restaurantapi.dataaccess.repository.ApiSessionRepository;
 

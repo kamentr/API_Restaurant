@@ -2,8 +2,6 @@ package net.kodar.restaurantapi.presentation.param;
 
 
 import java.io.Serializable;
-import java.util.List;
-
 import javax.persistence.*;
 
 import lombok.Data;

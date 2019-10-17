@@ -1,39 +1,20 @@
 package net.kodar.restaurantapi.config;
 
 import java.io.IOException;
-import java.security.Principal;
-import java.util.Base64;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.UUID;
-
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.hibernate.annotations.Filter;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
-import org.springframework.security.web.authentication.www.BasicAuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
-import org.springframework.web.filter.GenericFilterBean;
 import org.springframework.web.filter.OncePerRequestFilter;
 
 import net.kodar.restaurantapi.data.entities.ApiBasicAuthentication;
-import net.kodar.restaurantapi.data.entities.ApiUser;
-import net.kodar.restaurantapi.data.entities.security.ApiSession;
 import net.kodar.restaurantapi.data.entities.security.CustomUsernamePasswordAuthentication;
-import net.kodar.restaurantapi.dataaccess.dao.apiuser.ApiUserDaoImpl;
-import net.kodar.restaurantapi.dataaccess.repository.ApiSessionRepository;
 
 @Filter(name = "preAuthFilter")
 @Component
@@ -43,27 +24,38 @@ public class CustomPreAuthenticationFilter extends OncePerRequestFilter {
 
 	private static final String AUTHENTICATION_BASIC = "Authorization";
 
+	@Autowired
+	private ApiCredentials apiCredentials;
+
 	@Override
 	protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain chain)
 			throws ServletException, IOException {
 
-		CustomUsernamePasswordAuthentication authentication = (CustomUsernamePasswordAuthentication) SecurityContextHolder
-				.getContext().getAuthentication();
+		Authentication auth = apiCredentials.getAuthentication();
+		//if (null != auth) {
+			CustomUsernamePasswordAuthentication authentication = (CustomUsernamePasswordAuthentication) auth;
 
-		final HttpServletRequest httpRequest = (HttpServletRequest) request;
+			final String tokenURLparam = request.getParameter("token");
 
-		if (authentication == null) {
-			authentication = TokenAuthentication(httpRequest);
-		}
+			final HttpServletRequest httpRequest = (HttpServletRequest) request;
 
-		if (authentication == null) {
-			authentication = BAAuthentication(httpRequest);
-		}
+			if (authentication == null) {
+				authentication = TokenAuthentication(httpRequest, tokenURLparam);
+			}
 
-		SecurityContextHolder.getContext().setAuthentication(authentication);
+			if (authentication == null) {
+				authentication = BAAuthentication(httpRequest);
+			}
+
+			SecurityContextHolder.getContext().setAuthentication(authentication);
+
+			response.addHeader("Access-Control-Allow-Origin", "*");
+			response.setHeader("Access-Control-Allow-Origin", "*");
+		
 		chain.doFilter(request, response);
 	}
 
+	@SuppressWarnings("unused")
 	private CustomUsernamePasswordAuthentication BAAuthentication(HttpServletRequest httpRequest) {
 
 		ApiBasicAuthentication basicAuthHeader = new ApiBasicAuthentication(
@@ -82,14 +74,15 @@ public class CustomPreAuthenticationFilter extends OncePerRequestFilter {
 		return null;
 	}
 
-	private CustomUsernamePasswordAuthentication TokenAuthentication(HttpServletRequest httpRequest) {
+	private CustomUsernamePasswordAuthentication TokenAuthentication(HttpServletRequest httpRequest,
+			String tokenURLparam) {
 
-		String accessAuthToken = httpRequest.getHeader(AUTHENTICATION_TOKEN);
-
-		if (accessAuthToken != null) {
-
+		String token = tokenURLparam;
+		if (token == null)
+			token = httpRequest.getHeader(AUTHENTICATION_TOKEN);
+		if (token != null) {
 			CustomUsernamePasswordAuthentication authentication = new CustomUsernamePasswordAuthentication("", "",
-					accessAuthToken);
+					token);
 
 			return authentication;
 		}

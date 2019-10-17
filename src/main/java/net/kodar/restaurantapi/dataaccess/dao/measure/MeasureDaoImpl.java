@@ -13,5 +13,4 @@ public class MeasureDaoImpl extends DaoGenericImpl<Measure, Long> implements Mea
 		// TODO Auto-generated method stub
 		return entity.getId();
 	}
-
 }

@@ -8,8 +8,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import net.kodar.restaurantapi.data.entities.NamedPersistent;
 
-import java.util.List;
-
 
 
 @Data

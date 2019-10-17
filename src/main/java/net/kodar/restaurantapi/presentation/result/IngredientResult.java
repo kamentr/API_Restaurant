@@ -8,8 +8,6 @@ import lombok.EqualsAndHashCode;
 import net.kodar.restaurantapi.data.entities.IngredientStatus;
 import net.kodar.restaurantapi.data.entities.NamedPersistent;
 
-import java.util.List;
-
 
 /**
  * The persistent class for the ingredient database table.

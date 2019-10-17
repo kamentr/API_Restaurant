@@ -2,8 +2,6 @@ package net.kodar.restaurantapi.business.processor.apigroup;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,13 +10,9 @@ import net.kodar.restaurantapi.business.transformer.param.apigroup.ApiGroupParam
 import net.kodar.restaurantapi.business.transformer.result.apigroup.ApiGroupResultTransformer;
 import net.kodar.restaurantapi.business.validator.apigroup.ApiGroupValidatorImpl;
 import net.kodar.restaurantapi.data.entities.ApiGroup;
-import net.kodar.restaurantapi.data.entities.ApiUser;
 import net.kodar.restaurantapi.data.entities.ApiUserGroup;
 import net.kodar.restaurantapi.dataaccess.dao.apigroup.ApiGroupDaoImpl;
-import net.kodar.restaurantapi.dataaccess.dao.apiuser.ApiUserDao;
-import net.kodar.restaurantapi.dataaccess.dao.apiuser.ApiUserDaoImpl;
 import net.kodar.restaurantapi.dataaccess.dao.apiusergroup.ApiUserGroupDaoImpl;
-import net.kodar.restaurantapi.dataaccess.repository.ApiUserGroupRepository;
 import net.kodar.restaurantapi.presentation.param.ApiGroupParam;
 import net.kodar.restaurantapi.presentation.result.ApiGroupResult;
 
@@ -29,12 +23,6 @@ implements ApiGroupProcessor{
 
 	@Autowired
 	private ApiUserGroupDaoImpl apiUserGroupDao;
-	
-	@Autowired
-	private ApiUserGroupRepository repo; 
-	
-	@Autowired
-	private ApiUserDaoImpl userDao;
 	
 	@Override
 	public Long getID(ApiGroupParam param) {

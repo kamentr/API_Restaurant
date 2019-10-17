@@ -3,7 +3,6 @@ package net.kodar.restaurantapi.config;
 import java.io.IOException;
 import java.io.Serializable;
 
-import javax.naming.AuthenticationException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

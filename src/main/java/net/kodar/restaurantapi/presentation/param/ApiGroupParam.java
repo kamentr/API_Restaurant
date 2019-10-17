@@ -7,8 +7,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import net.kodar.restaurantapi.data.entities.NamedPersistent;
 
-import java.util.List;
-
 
 /**
  * The persistent class for the api_group database table.

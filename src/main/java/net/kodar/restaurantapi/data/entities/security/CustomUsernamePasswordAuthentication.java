@@ -1,14 +1,17 @@
 package net.kodar.restaurantapi.data.entities.security;
 
 import java.util.Collection;
-import java.util.List;
-
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
 
 
 public class CustomUsernamePasswordAuthentication extends UsernamePasswordAuthenticationToken{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	private String authToken;
 	
 	public CustomUsernamePasswordAuthentication(Object principal, Object credentials) {

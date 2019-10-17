@@ -7,8 +7,6 @@ import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
 
 /**
  * The persistent class for the restaurant_menu_category database table.

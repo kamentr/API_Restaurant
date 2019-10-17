@@ -3,7 +3,6 @@ package net.kodar.restaurantapi.business.transformer.param.ingredientstatus;
 import org.springframework.stereotype.Component;
 
 import net.kodar.restaurantapi.business.transformer.param.ParamTransformer;
-import net.kodar.restaurantapi.data.entities.Ingredient;
 import net.kodar.restaurantapi.data.entities.IngredientStatus;
 import net.kodar.restaurantapi.presentation.param.IngredientStatusParam;
 @Component

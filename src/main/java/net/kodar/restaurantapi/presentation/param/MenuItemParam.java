@@ -10,7 +10,6 @@ import net.kodar.restaurantapi.data.entities.Measure;
 import net.kodar.restaurantapi.data.entities.NamedPersistent;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 
 /**

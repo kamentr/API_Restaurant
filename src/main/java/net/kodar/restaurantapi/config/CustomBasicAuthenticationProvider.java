@@ -12,7 +12,6 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import net.kodar.restaurantapi.business.processor.apigroup.ApiGroupProcessorImpl;
-import net.kodar.restaurantapi.business.processor.apiusergroup.ApiUserGroupProcessorImpl;
 import net.kodar.restaurantapi.data.entities.ApiGroup;
 import net.kodar.restaurantapi.data.entities.ApiUser;
 import net.kodar.restaurantapi.data.entities.security.CustomUsernamePasswordAuthentication;

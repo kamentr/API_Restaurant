@@ -8,7 +8,6 @@ import net.kodar.restaurantapi.business.transformer.result.restauranttable.Resta
 import net.kodar.restaurantapi.business.validator.restauranttable.RestaurantTableValidator;
 import net.kodar.restaurantapi.data.entities.RestaurantTable;
 import net.kodar.restaurantapi.dataaccess.dao.restauranttable.RestaurantTableDaoImpl;
-import net.kodar.restaurantapi.dataaccess.dao.restauranttablestatus.RestaurantTableStatusDaoImpl;
 import net.kodar.restaurantapi.presentation.param.RestaurantTableParam;
 import net.kodar.restaurantapi.presentation.result.RestaurantTableResult;
 

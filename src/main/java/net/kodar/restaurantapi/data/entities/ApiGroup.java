@@ -8,8 +8,6 @@ import org.springframework.security.core.GrantedAuthority;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
 
 /**
  * The persistent class for the api_group database table.

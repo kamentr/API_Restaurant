@@ -2,8 +2,6 @@ package net.kodar.restaurantapi.data.entities;
 
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-
 import javax.persistence.Access;
 import javax.persistence.AccessType;
 import javax.persistence.Column;
@@ -11,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.annotations.OptimisticLockType;

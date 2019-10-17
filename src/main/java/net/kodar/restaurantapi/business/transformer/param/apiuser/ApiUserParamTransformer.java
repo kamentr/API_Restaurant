@@ -4,7 +4,6 @@ import org.springframework.stereotype.Component;
 
 import net.kodar.restaurantapi.business.transformer.param.ParamTransformer;
 import net.kodar.restaurantapi.data.entities.ApiUser;
-import net.kodar.restaurantapi.presentation.param.ApiGroupParam;
 import net.kodar.restaurantapi.presentation.param.ApiUserParam;
 @Component
 public class ApiUserParamTransformer implements ParamTransformer<ApiUserParam, ApiUser, ApiUser> {

@@ -6,8 +6,6 @@ import javax.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
-import java.util.List;
-
 
 /**
  * The persistent class for the ingredient database table.

@@ -9,8 +9,6 @@ import net.kodar.restaurantapi.data.entities.ApiGroupStatus;
 import net.kodar.restaurantapi.data.entities.LifecycleStatus;
 import net.kodar.restaurantapi.data.entities.NamedPersistent;
 
-import java.util.List;
-
 
 /**
  * The persistent class for the api_group database table.

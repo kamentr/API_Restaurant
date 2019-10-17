@@ -12,7 +12,6 @@ import net.kodar.restaurantapi.data.entities.NamedPersistent;
 import net.kodar.restaurantapi.data.entities.ProductStatus;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 
 /**

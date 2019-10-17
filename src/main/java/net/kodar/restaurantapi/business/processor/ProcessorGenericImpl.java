@@ -16,7 +16,7 @@ public abstract class ProcessorGenericImpl
                 DAO extends DaoGenericImpl<ENT, PK>,
                 PTR extends BiFunction<IN, ENT, ENT>,
                 RTR extends Function<ENT, OUT>,
-                VAL extends GenericValidator>
+                VAL extends GenericValidator<IN>>
         implements Processor<IN, OUT, PK> {
 
     public abstract PK getID(IN param);
