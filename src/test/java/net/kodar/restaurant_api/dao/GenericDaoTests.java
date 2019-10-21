@@ -66,6 +66,11 @@ public class GenericDaoTests {
 
         dao.get(INVALID_ID);
     }
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void get_whenCannotFindObject_shouldThrowIllegalArgumentException() {
+        dao.get(Long.MAX_VALUE);
+    }
 
     @Test
     public void save_givenValidMeasure_shouldReturnTheCorrectMeasure() {

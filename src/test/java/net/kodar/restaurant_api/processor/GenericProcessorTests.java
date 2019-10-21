@@ -83,7 +83,7 @@ public class GenericProcessorTests {
 	@Test
 	public void get_givenValidId_shouldInvokeResultTransformer() {
 		when(dao.get(VALID_ID)).thenReturn(VALID_MEASURE);
-		when(resultTransformer.apply(VALID_MEASURE)).thenReturn(VALID_RESULT_MEASURE);
+		//when(resultTransformer.apply(VALID_MEASURE)).thenReturn(VALID_RESULT_MEASURE);
 
 		processor.get(VALID_ID);
 
@@ -111,7 +111,7 @@ public class GenericProcessorTests {
 	@Test
 	public void getAll_whenInvoked_shouldInvokeResultTransormer() {
 		when(dao.getAll()).thenReturn(Collections.singletonList(VALID_MEASURE));
-		when(resultTransformer.apply(VALID_MEASURE)).thenReturn(VALID_RESULT_MEASURE);
+		//when(resultTransformer.apply(VALID_MEASURE)).thenReturn(VALID_RESULT_MEASURE);
 
 		processor.getAll();
 
@@ -130,7 +130,7 @@ public class GenericProcessorTests {
 	@Test
 	public void save_whenInvokedShouldInvokeParamTransformer() {
 		doNothing().when(validator).validate(VALID_PARAM_MEASURE);
-		when(paramTransformer.apply(VALID_PARAM_MEASURE, null)).thenReturn(VALID_MEASURE);
+		//when(paramTransformer.apply(VALID_PARAM_MEASURE, null)).thenReturn(VALID_MEASURE);
 		processor.save(VALID_PARAM_MEASURE);
 
 		verify(paramTransformer, times(1)).apply(VALID_PARAM_MEASURE, null);
@@ -198,5 +198,12 @@ public class GenericProcessorTests {
 		processor.getID(VALID_PARAM_MEASURE_MOCK);
 
 		verify(VALID_PARAM_MEASURE_MOCK, times(1)).getId();
+	}
+	
+	@Test
+	public void save_whenInvokedShouldInvokeValidatorValidate() {
+		processor.save(VALID_PARAM_MEASURE);
+
+		verify(validator, times(1)).validate(VALID_PARAM_MEASURE);
 	}
 }

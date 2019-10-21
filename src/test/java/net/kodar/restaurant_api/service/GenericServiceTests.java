@@ -2,7 +2,6 @@ package net.kodar.restaurant_api.service;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
@@ -80,12 +79,6 @@ public class GenericServiceTests {
         assertEquals(measureResult.getMeasureUnit(), VALID_MEASURE.getMeasureUnit());
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void get_givenInvalidId_ShouldThrowException() {
-        when(processor.get(INVALID_ID)).thenThrow(new IllegalArgumentException());
-        service.get(INVALID_ID);
-    }
-
     @Test
     public void getAll_givenTwoMeasures_shouldReturnTwoMeasures() {
         List<MeasureResult> measureList =  Arrays.asList(VALID_MEASURE_RESULT, VALID_MEASURE_RESULT);
@@ -105,8 +98,6 @@ public class GenericServiceTests {
 
     @Test(expected = Exception.class)
     public void update_givenWrongId_ShouldThrowException() throws Exception {
-        doThrow(new Exception()).when(processor).update(VALID_MEASURE_PARAM);
-
         service.update(INVALID_ID, VALID_MEASURE_PARAM);
     }
 
