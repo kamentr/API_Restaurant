@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 language: java
 jdk: openjdk8
 
@@ -8,3 +9,16 @@ before_install:
  - gradle wrapper --gradle-version 4.2
 script:
   - ./gradlew clean build -i --continue
+=======
+language: java
+jdk: openjdk8
+
+before_install:
+ - chmod +x gradlew
+ 
+services:
+  - mysql
+  
+before_install:
+  - mysql -e 'CREATE DATABASE restaurant;'
+>>>>>>> branch 'master' of https://github.com/kamentr/API_Restaurant.git
