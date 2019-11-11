@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-language: java
-jdk: openjdk8
-
-git update-index --chmod=+x gradlew
-
-before_install:
- - chmod +x gradlew
- - gradle wrapper --gradle-version 4.2
-script:
-  - ./gradlew clean build -i --continue
-=======
 language: java
 jdk: openjdk8
 
@@ -21,4 +9,3 @@ services:
   
 before_install:
   - mysql -e 'CREATE DATABASE restaurant;'
->>>>>>> branch 'master' of https://github.com/kamentr/API_Restaurant.git
